@@ -3,6 +3,7 @@ credentials.json
 google_ads_token.json
 client_secret_*.json
 .env
+RENDER_SECRETS.txt
 
 # Python
 __pycache__/
