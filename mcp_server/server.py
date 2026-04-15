@@ -17,7 +17,7 @@ from datetime import date, timedelta
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.INFO)
 
 # Remote deployment: bind to 0.0.0.0 and use PORT from hosting platform
 _host = os.environ.get("HOST", "0.0.0.0")
@@ -68,7 +68,11 @@ def _ok(data) -> str:
     return json.dumps(data, indent=2, default=str)
 
 
+logger = logging.getLogger("mcp_server")
+
+
 def _err(tool: str, ex: Exception) -> str:
+    logger.exception(f"Tool {tool} failed")
     return json.dumps({"error": str(ex), "tool": tool})
 
 
