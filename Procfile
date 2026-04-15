@@ -1,1 +1,1 @@
-web: MCP_TRANSPORT=sse python -m mcp_server.server
+web: python -m mcp_server.server

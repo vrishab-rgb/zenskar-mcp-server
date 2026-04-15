@@ -3,10 +3,10 @@ services:
     name: zenskar-mcp
     runtime: python
     buildCommand: pip install .
-    startCommand: MCP_TRANSPORT=sse python -m mcp_server.server
+    startCommand: python -m mcp_server.server
     envVars:
       - key: PYTHON_VERSION
-        value: "3.12.8"
+        value: "3.11.11"
       - key: MCP_TRANSPORT
         value: sse
       - key: GOOGLE_SERVICE_ACCOUNT_JSON
