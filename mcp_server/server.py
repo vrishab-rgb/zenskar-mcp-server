@@ -15,17 +15,21 @@ import os
 from datetime import date, timedelta
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 logging.basicConfig(level=logging.WARNING)
 
 # Remote deployment: bind to 0.0.0.0 and use PORT from hosting platform
 _host = os.environ.get("HOST", "0.0.0.0")
 _port = int(os.environ.get("PORT", "8000"))
+_is_remote = os.environ.get("MCP_TRANSPORT", "stdio") != "stdio"
 
 mcp = FastMCP(
     "Zenskar Marketing Analytics",
     host=_host,
     port=_port,
+    # Disable DNS rebinding protection for remote deployment so Claude.ai can connect
+    transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False) if _is_remote else None,
     instructions=(
         "Marketing analytics server for Zenskar. Provides read-only access to:\n"
         "- Google Search Console (organic search performance)\n"
