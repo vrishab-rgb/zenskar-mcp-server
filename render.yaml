@@ -2,7 +2,7 @@ services:
   - type: web
     name: zenskar-mcp
     runtime: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install .
     startCommand: MCP_TRANSPORT=sse python -m mcp_server.server
     envVars:
       - key: PYTHON_VERSION
