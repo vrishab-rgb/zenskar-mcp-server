@@ -54,3 +54,7 @@ HUBSPOT_PAT = os.getenv("HUBSPOT_PAT", "")
 
 # ── Bing Webmaster Tools ────────────────────────────────────────
 BING_API_KEY = os.getenv("BING_API_KEY", "")
+
+# ── Supabase (Recommendation Registry) ──────────────────────────
+SUPABASE_URL = os.getenv("SUPABASE_URL", "")
+SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")

@@ -12,6 +12,7 @@ dependencies = [
     "requests>=2.28",
     "python-dotenv>=1.0",
     "protobuf>=4.0",
+    "supabase>=2.0",
 ]
 
 [project.scripts]
