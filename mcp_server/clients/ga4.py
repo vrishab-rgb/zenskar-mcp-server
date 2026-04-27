@@ -150,6 +150,56 @@ def fetch_channel_breakdown(
     )
 
 
+def _string_filter(field: str, value: str) -> FilterExpression:
+    return FilterExpression(filter=Filter(
+        field_name=field,
+        string_filter=Filter.StringFilter(
+            match_type=Filter.StringFilter.MatchType.EXACT, value=value,
+        ),
+    ))
+
+
+def _and_filters(*filters: FilterExpression) -> FilterExpression | None:
+    fs = [f for f in filters if f is not None]
+    if not fs:
+        return None
+    if len(fs) == 1:
+        return fs[0]
+    return FilterExpression(and_group=FilterExpression.AndGroup(expressions=fs))
+
+
+def fetch_metric_totals(
+    start_date: date, end_date: date,
+    metrics: list[str], country: str = "", channel: str = "",
+) -> dict:
+    """Single-row totals for the given metrics over the period."""
+    dim_filter = _build_filter(country, channel)
+    rows = run_report(start_date, end_date, metrics=metrics, dimension_filter=dim_filter, limit=1)
+    if rows:
+        return {m: rows[0].get(m, 0) for m in metrics}
+    return {m: 0 for m in metrics}
+
+
+def fetch_pages_by_dimension(
+    start_date: date, end_date: date,
+    extra_dim: str,
+    metrics: list[str] | None = None,
+    country: str = "", channel: str = "",
+    limit: int = 50,
+) -> list[dict]:
+    """Top landing pages broken out by an extra dimension (source, medium, country)."""
+    metrics = metrics or ["sessions", "totalUsers", "engagementRate", "keyEvents"]
+    dim_filter = _build_filter(country, channel)
+    return run_report(
+        start_date, end_date,
+        metrics=metrics,
+        dimensions=["landingPagePlusQueryString", extra_dim],
+        dimension_filter=dim_filter,
+        order_by=[OrderBy(metric=OrderBy.MetricOrderBy(metric_name="sessions"), desc=True)],
+        limit=limit,
+    )
+
+
 def fetch_top_pages(
     start_date: date, end_date: date, limit: int = 30,
     country: str = "", channel: str = ""

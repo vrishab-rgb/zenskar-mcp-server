@@ -100,6 +100,90 @@ def fetch_bing_top_queries(
     return sorted(rows, key=lambda x: x["clicks"], reverse=True)
 
 
+def fetch_bing_query_to_pages(
+    query: str, start: date, end: date, site_url: str | None = None
+) -> list[dict]:
+    """Pages that ranked for a specific query (Bing GetQueryPageStats)."""
+    site = site_url or config.GSC_SITE_URL
+    data = _get("GetQueryPageStats", {
+        "siteUrl": site,
+        "query": query,
+        "country": "us",
+    })
+    if not isinstance(data, list):
+        data = []
+    data = _filter_rows_by_date(data, start, end)
+
+    agg: dict[str, dict] = defaultdict(
+        lambda: {"clicks": 0, "impressions": 0, "position_sum": 0.0, "position_count": 0}
+    )
+    for row in data:
+        url = row.get("Query") or row.get("Url") or row.get("Page") or ""
+        if not url:
+            continue
+        b = agg[url]
+        b["clicks"] += row.get("Clicks") or 0
+        b["impressions"] += row.get("Impressions") or 0
+        pos = row.get("AvgImpressionPosition") or 0.0
+        if pos > 0:
+            b["position_sum"] += pos
+            b["position_count"] += 1
+
+    rows = []
+    for url, vals in agg.items():
+        impr = vals["impressions"]
+        clicks = vals["clicks"]
+        avg_pos = vals["position_sum"] / vals["position_count"] if vals["position_count"] else 0.0
+        rows.append({
+            "page": url, "clicks": clicks, "impressions": impr,
+            "ctr": round(clicks / impr, 4) if impr else 0.0,
+            "position": round(avg_pos, 1),
+        })
+    return sorted(rows, key=lambda x: x["clicks"], reverse=True)
+
+
+def fetch_bing_page_to_queries(
+    page_url: str, start: date, end: date, site_url: str | None = None
+) -> list[dict]:
+    """Queries that drove a specific page (Bing GetPageQueryStats)."""
+    site = site_url or config.GSC_SITE_URL
+    data = _get("GetPageQueryStats", {
+        "siteUrl": site,
+        "page": page_url,
+        "country": "us",
+    })
+    if not isinstance(data, list):
+        data = []
+    data = _filter_rows_by_date(data, start, end)
+
+    agg: dict[str, dict] = defaultdict(
+        lambda: {"clicks": 0, "impressions": 0, "position_sum": 0.0, "position_count": 0}
+    )
+    for row in data:
+        q = row.get("Query") or ""
+        if not q:
+            continue
+        b = agg[q]
+        b["clicks"] += row.get("Clicks") or 0
+        b["impressions"] += row.get("Impressions") or 0
+        pos = row.get("AvgImpressionPosition") or 0.0
+        if pos > 0:
+            b["position_sum"] += pos
+            b["position_count"] += 1
+
+    rows = []
+    for q, vals in agg.items():
+        impr = vals["impressions"]
+        clicks = vals["clicks"]
+        avg_pos = vals["position_sum"] / vals["position_count"] if vals["position_count"] else 0.0
+        rows.append({
+            "query": q, "clicks": clicks, "impressions": impr,
+            "ctr": round(clicks / impr, 4) if impr else 0.0,
+            "position": round(avg_pos, 1),
+        })
+    return sorted(rows, key=lambda x: x["clicks"], reverse=True)
+
+
 def fetch_bing_top_pages(
     start: date, end: date, site_url: str | None = None
 ) -> list[dict]:

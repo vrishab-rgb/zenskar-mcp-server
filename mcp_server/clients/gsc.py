@@ -78,6 +78,56 @@ def fetch_search_analytics(
     return all_rows
 
 
+def fetch_page_metrics(
+    start_date: date,
+    end_date: date,
+    country: str = "",
+    row_limit: int = 25000,
+) -> list[dict]:
+    """Fetch per-page metrics over the period. Used by movers/losers and others."""
+    filters = None
+    if country:
+        filters = [{"filters": [{"dimension": "country", "operator": "equals",
+                                  "expression": country.lower()}]}]
+    return fetch_search_analytics(
+        start_date, end_date,
+        dimensions=["page"],
+        row_limit=row_limit,
+        dimension_filter_groups=filters,
+    )
+
+
+def fetch_position_distribution(
+    start_date: date, end_date: date, country: str = ""
+) -> dict:
+    """Bucket pages by current position into 1-3 / 4-10 / 11-20 / 21+."""
+    rows = fetch_page_metrics(start_date, end_date, country=country)
+    buckets = {"1-3": 0, "4-10": 0, "11-20": 0, "21+": 0}
+    bucket_clicks = {"1-3": 0, "4-10": 0, "11-20": 0, "21+": 0}
+    bucket_impr = {"1-3": 0, "4-10": 0, "11-20": 0, "21+": 0}
+    for r in rows:
+        pos = r.get("position", 0) or 0
+        if pos <= 3:
+            b = "1-3"
+        elif pos <= 10:
+            b = "4-10"
+        elif pos <= 20:
+            b = "11-20"
+        else:
+            b = "21+"
+        buckets[b] += 1
+        bucket_clicks[b] += r.get("clicks", 0) or 0
+        bucket_impr[b] += r.get("impressions", 0) or 0
+    return {
+        "buckets": [
+            {"position_range": k, "page_count": buckets[k],
+             "clicks": bucket_clicks[k], "impressions": bucket_impr[k]}
+            for k in ("1-3", "4-10", "11-20", "21+")
+        ],
+        "total_pages": sum(buckets.values()),
+    }
+
+
 def fetch_totals(start_date: date, end_date: date) -> dict:
     """Fetch aggregate totals (no dimensions) for a date range."""
     service = _get_service()
