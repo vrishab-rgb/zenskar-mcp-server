@@ -520,7 +520,6 @@ def register(mcp) -> None:
         "copilot.microsoft.com",
         "you.com",
         "phind.com",
-        "bing.com",
     ]
 
     @mcp.tool()
