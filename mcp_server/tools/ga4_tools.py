@@ -5,6 +5,18 @@ from datetime import date
 from mcp_server.tools._shared import err, ok, parse_dates, period_compare
 
 
+_LLM_SOURCES = [
+    "perplexity.ai",
+    "chat.openai.com",
+    "chatgpt.com",
+    "claude.ai",
+    "gemini.google.com",
+    "copilot.microsoft.com",
+    "you.com",
+    "phind.com",
+]
+
+
 def register(mcp) -> None:
     @mcp.tool()
     def ga4_site_engagement(
@@ -498,7 +510,7 @@ def register(mcp) -> None:
             from google.analytics.data_v1beta.types import OrderBy
 
             start, end = parse_dates(start_date, end_date)
-            dim_filter = ga4._build_filter(country, "")
+            dim_filter = ga4._build_filter(country)
             rows = ga4.run_report(
                 start, end,
                 metrics=["sessions", "totalUsers", "engagementRate", "keyEvents"],
@@ -510,17 +522,6 @@ def register(mcp) -> None:
             return ok({"period": f"{start} to {end}", "row_count": len(rows), "rows": rows})
         except Exception as ex:
             return err("ga4_referrer_breakdown", ex)
-
-    _LLM_SOURCES = [
-        "perplexity.ai",
-        "chat.openai.com",
-        "chatgpt.com",
-        "claude.ai",
-        "gemini.google.com",
-        "copilot.microsoft.com",
-        "you.com",
-        "phind.com",
-    ]
 
     @mcp.tool()
     def ga4_llm_referrals(
@@ -538,6 +539,9 @@ def register(mcp) -> None:
             end_date: End date YYYY-MM-DD (default: today)
             country: Full country name filter (e.g. "United States")
             limit: Max source rows to return (default: 20)
+
+        Note: totals reflect only the rows returned (bounded by limit). With 8 known LLM
+        sources and limit=20, this covers all sources in practice.
         """
         try:
             from mcp_server.clients import ga4
@@ -546,7 +550,7 @@ def register(mcp) -> None:
             start, end = parse_dates(start_date, end_date)
 
             llm_filter = ga4._in_list_filter("sessionSource", _LLM_SOURCES)
-            country_filter = ga4._build_filter(country, "")
+            country_filter = ga4._build_filter(country)
             combined = ga4._and_filters(llm_filter, country_filter)
 
             rows = ga4.run_report(

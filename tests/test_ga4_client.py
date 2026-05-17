@@ -1,3 +1,5 @@
+import pytest
+
 from google.analytics.data_v1beta.types import Filter
 from mcp_server.clients.ga4 import _in_list_filter
 
@@ -14,7 +16,6 @@ def test_in_list_filter_sets_values():
 
 
 def test_in_list_filter_empty_raises():
-    import pytest
     with pytest.raises(ValueError, match="must be non-empty"):
         _in_list_filter("sessionSource", [])
 
