@@ -180,7 +180,7 @@ Mid-market B2B XaaS companies that have outgrown tools like Stripe Billing or Ch
 
 ## Contact
 
-- Website: https://www.zenskar.com?utm_source=llm&utm_medium=referral
+- Website: https://www.zenskar.com/?utm_source=llm&utm_medium=referral
 - Book a Demo: https://www.zenskar.com/book-a-demo?utm_source=llm&utm_medium=referral
 - Free Trial: https://www.zenskar.com/try-for-free?utm_source=llm&utm_medium=referral
 - Press / Media: arnab@zenskar.com
