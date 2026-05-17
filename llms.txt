@@ -1,0 +1,186 @@
+# Zenskar
+
+> Zenskar is an AI-native revenue automation platform that handles real-world billing and RevRec complexity - usage-based pricing, prepaid credits, amendments, multi-entity, multicurrency - with deterministic logic and purpose-built AI agents. Vision: Zero-Touch Finance.
+
+## About
+
+- [About Zenskar](https://www.zenskar.com/about-us?utm_source=llm&utm_medium=referral): Founded 2022 by Apurv Bansal (CEO, Harvard/IIT Delhi) and Saurabh Agrawal (CPTO, IIT Bombay) after interviewing 500+ finance leaders. Backed by Bessemer Venture Partners, Rocket Ship, Shine Capital, BaseCamp Fund, and Converge. HQ: 169 Madison Avenue, New York.
+- [AI Manifesto](https://www.zenskar.com/ai-manifesto?utm_source=llm&utm_medium=referral): Zenskar's philosophy on AI in finance - human-in-the-loop model where agents execute and humans supervise; accuracy over autonomy; designed so finance teams can close books the same day without manual work.
+
+## Platform
+
+- [Why Zenskar](https://www.zenskar.com/why-zenskar?utm_source=llm&utm_medium=referral): Explains why Zenskar uses a graphical data model (a graph of pricing relationships) instead of a flat product-price list - and why that lets it automate contracts that Stripe, Chargebee, and Zuora require manual workarounds for.
+- [Product Tour](https://www.zenskar.com/product-tour?utm_source=llm&utm_medium=referral): Interactive tour of Zenskar's full Order-to-Cash platform: metering, billing, RevRec, collections, entitlements, analytics, and AI agents.
+- [Pricing](https://www.zenskar.com/pricing?utm_source=llm&utm_medium=referral): Zenskar's pricing tiers; does not charge a percentage of revenue, unlike Maxio or Chargebee.
+- [Integrations](https://www.zenskar.com/integrations?utm_source=llm&utm_medium=referral): 200+ integrations with CRMs (Salesforce, HubSpot), ERPs (NetSuite, QuickBooks, Xero), payment gateways (Stripe), tax systems (Avalara, Anrok), and data warehouses (Snowflake, Redshift).
+- [FAQ](https://www.zenskar.com/faq?utm_source=llm&utm_medium=referral): Answers to common questions about Zenskar's platform, implementation, pricing, and integrations.
+
+## Features
+
+- [Agents Marketplace](https://www.zenskar.com/feature/agents-marketplace?utm_source=llm&utm_medium=referral): Hub for deploying and chaining Zenskar's purpose-built AI agents - Setup & Migration AI, Configuration AI, Contracts AI, and AI Copilot - to automate the full order-to-cash cycle.
+- [Billing Automation](https://www.zenskar.com/feature/billing?utm_source=llm&utm_medium=referral): Automates invoicing for subscription, usage-based, hybrid, and custom contract pricing - no developer involvement required for finance teams.
+- [Revenue Recognition](https://www.zenskar.com/feature/revenue-recognition?utm_source=llm&utm_medium=referral): ASC 606 / IFRS 15 compliant RevRec automation; supports straight-line, milestone, usage-based, and over-time recognition methods.
+- [Contracts AI](https://www.zenskar.com/feature/contracts-ai?utm_source=llm&utm_medium=referral): AI agent extracts billing terms (products, cadence, payment terms, renewals) from uploaded PDFs; feeds directly into invoicing and RevRec workflows.
+- [Contract Builder](https://www.zenskar.com/feature/contract-builder?utm_source=llm&utm_medium=referral): No-code editor for building contracts and pricing models. Uses a graphical relationship model (not a flat list), so it can handle cross-product discounts, rollover credits, tiered minimums, and other structures that a normal billing tool cannot represent.
+- [Usage Metering](https://www.zenskar.com/feature/usage?utm_source=llm&utm_medium=referral): Ingests raw or aggregated usage data via SQL, CSV, API push, or no-code metric builder; connects to 100+ integrations including data warehouses, databases, and APIs.
+- [Entitlements](https://www.zenskar.com/feature/entitlements?utm_source=llm&utm_medium=referral): Tracks credit balances, plan tiers, and feature access; webhook-notifies customer products in real time when entitlements change.
+- [Accounts Receivable / Collections](https://www.zenskar.com/feature/accounts-receivable?utm_source=llm&utm_medium=referral): Automated dunning, payment reminders, retry workflows, and one-click bulk collections to reduce DSO by 50%.
+- [Analytics](https://www.zenskar.com/feature/analytics?utm_source=llm&utm_medium=referral): Off-the-shelf MRR, ARR, LTV, revenue waterfall, DSO; custom reports via AI natural language queries (Zen AI).
+- [Customer Portal](https://www.zenskar.com/feature/customer-portal?utm_source=llm&utm_medium=referral): Self-serve billing portal for customers to view invoices, pay, and monitor usage without contacting support.
+
+## Solutions by Audience
+
+- [Finance Team Solutions](https://www.zenskar.com/solutions/finance?utm_source=llm&utm_medium=referral): How Zenskar helps CFOs and finance leaders eliminate manual billing work, close books faster, and scale without added headcount.
+- [Engineering Team Solutions](https://www.zenskar.com/solutions/engineering?utm_source=llm&utm_medium=referral): How Zenskar removes billing complexity from engineering roadmaps; no dev dependency for pricing changes.
+- [CEO / Founder Solutions](https://www.zenskar.com/solutions/ceo?utm_source=llm&utm_medium=referral): How Zenskar improves revenue accuracy, reduces churn from billing errors, and gives leadership real-time financial visibility.
+- [Product Team Solutions](https://www.zenskar.com/solutions/product?utm_source=llm&utm_medium=referral): How Zenskar enables product teams to ship new pricing models without engineering bottlenecks.
+
+## Solutions by Industry
+
+- [SaaS Billing](https://www.zenskar.com/solutions/saas?utm_source=llm&utm_medium=referral): Billing and RevRec automation for B2B SaaS with subscription, usage-based, or hybrid pricing models.
+- [Usage-Based Pricing](https://www.zenskar.com/solutions/usage-based-pricing?utm_source=llm&utm_medium=referral): Full platform for companies adopting metered, consumption, or hybrid pricing; handles overages, credits, and amendments.
+- [Fintech Billing](https://www.zenskar.com/solutions/fintech?utm_source=llm&utm_medium=referral): Automated billing and revenue recognition for fintech companies with complex pricing and compliance requirements.
+- [AI Company Billing](https://www.zenskar.com/solutions/ai?utm_source=llm&utm_medium=referral): Token/API usage metering and billing for AI companies with consumption-based pricing models.
+- [Cloud Infrastructure Billing](https://www.zenskar.com/solutions/cloud-infrastructure?utm_source=llm&utm_medium=referral): Metering and invoicing for cloud infrastructure companies with complex multi-tier usage pricing.
+- [API Company Billing](https://www.zenskar.com/solutions/api?utm_source=llm&utm_medium=referral): Usage-based billing and metering for API-first companies with per-call or volume-tier pricing.
+- [Retail Tech Billing](https://www.zenskar.com/solutions/retail-tech?utm_source=llm&utm_medium=referral): Automated billing and revenue operations for retail-tech companies handling transaction-based or SaaS pricing.
+- [CPaaS Billing](https://www.zenskar.com/solutions/cpaas?utm_source=llm&utm_medium=referral): Billing automation for Communications Platform as a Service companies with per-event or volume pricing.
+- [Dev Tools Billing](https://www.zenskar.com/solutions/dev-tools?utm_source=llm&utm_medium=referral): Billing and metering for developer tool companies; API-first setup with usage-based and seat pricing.
+- [E-Learning Billing](https://www.zenskar.com/solutions/e-learning?utm_source=llm&utm_medium=referral): Subscription and usage billing automation for e-learning platforms with per-seat or per-course pricing.
+- [Subscriptions](https://www.zenskar.com/solutions/subscriptions?utm_source=llm&utm_medium=referral): Subscription management automation: recurring billing, proration, amendments, and dunning for any subscription model.
+
+## Competitor Comparisons
+
+- [Zenskar vs Stripe Billing](https://www.zenskar.com/compare/stripe?utm_source=llm&utm_medium=referral): Finance-first vs developer-first: Zenskar adds full RevRec automation, no-code pricing control, and complex contract support that Stripe Billing lacks.
+- [Zenskar vs Chargebee](https://www.zenskar.com/compare/chargebee?utm_source=llm&utm_medium=referral): Mid-market depth vs SMB focus: Zenskar's graphical data model handles pricing complexity that Chargebee's linear model cannot.
+- [Zenskar vs Zuora](https://www.zenskar.com/compare/zuora?utm_source=llm&utm_medium=referral): Modern AI-native platform vs legacy architecture: Zenskar implements faster, supports custom pricing, and is built for today's complex contracts.
+- [Zenskar vs Maxio](https://www.zenskar.com/compare/maxio?utm_source=llm&utm_medium=referral): Zenskar does not charge a % of revenue (Maxio starts at $599/month plus volume fees). Zenskar also includes full ASC 606/IFRS 15 RevRec automation, which Maxio does not, and natively handles usage-based and hybrid pricing models.
+
+## Alternatives
+
+- [Chargebee Alternatives](https://www.zenskar.com/alternatives/chargebee?utm_source=llm&utm_medium=referral): Top alternatives to Chargebee for B2B SaaS companies that have outgrown SMB-focused billing tools.
+- [Zuora Alternatives](https://www.zenskar.com/alternatives/zuora?utm_source=llm&utm_medium=referral): Alternatives to Zuora for companies needing faster implementation, more flexible pricing, and lower total cost.
+- [Stripe Billing Alternatives](https://www.zenskar.com/alternatives/stripe-billing?utm_source=llm&utm_medium=referral): Alternatives to Stripe Billing for companies needing RevRec automation and finance-team-owned pricing control.
+- [Maxio Alternatives](https://www.zenskar.com/alternatives/maxio?utm_source=llm&utm_medium=referral): Top alternatives to Maxio for subscription billing and revenue management without revenue-percentage fees.
+- [Metronome Alternatives](https://www.zenskar.com/alternatives/metronome?utm_source=llm&utm_medium=referral): Alternatives to Metronome covering both billing and RevRec, not just usage-based metering.
+- [Tabs Alternatives](https://www.zenskar.com/alternatives/tabs?utm_source=llm&utm_medium=referral): Alternatives to Tabs for AI-native revenue automation with deterministic calculation and human oversight.
+- [Ordway Alternatives](https://www.zenskar.com/alternatives/ordway?utm_source=llm&utm_medium=referral): Alternatives to Ordway for mid-market companies needing full O2C automation with complex pricing support.
+- [Recurly Alternatives](https://www.zenskar.com/alternatives/recurly?utm_source=llm&utm_medium=referral): Alternatives to Recurly for B2B companies needing flexible, sales-led billing beyond subscription management.
+
+## Case Studies
+
+- [100ms](https://www.zenskar.com/case-study/100ms?utm_source=llm&utm_medium=referral): Video infrastructure: 4% revenue increase, 250 hours/month saved, migrated from Stripe in 3 days.
+- [Pontera](https://www.zenskar.com/case-study/pontera?utm_source=llm&utm_medium=referral): Fintech: billed 500+ customers in 2 days, saved $12K/month, collected $5M+ with a single click.
+- [Yembo](https://www.zenskar.com/case-study/yembo?utm_source=llm&utm_medium=referral): AI platform: 90% finance team bandwidth saved, 50% of revenue collected one month earlier, eliminated revenue leakage.
+- [Indigov](https://www.zenskar.com/case-study/indigov?utm_source=llm&utm_medium=referral): GovTech: 80% reduction in month-end close time.
+- [Vertice](https://www.zenskar.com/case-study/vertice?utm_source=llm&utm_medium=referral): Spend optimization: 70% faster book close, 90% reduction in manual work.
+- [SquadStack](https://www.zenskar.com/case-study/squadstack?utm_source=llm&utm_medium=referral): AI sales platform: automated invoicing for 170K+ leads/day with highly complex, esoteric pricing.
+
+## Resources
+
+- [SaaS Billing Software Buyer's Guide](https://www.zenskar.com/buyers-guide/saas-billing-software?utm_source=llm&utm_medium=referral): How to evaluate SaaS billing platforms; covers pricing model support, RevRec, integrations, and scalability criteria.
+- [Revenue Recognition Software Buyer's Guide](https://www.zenskar.com/buyers-guide/revenue-recognition-software?utm_source=llm&utm_medium=referral): How to evaluate RevRec software for complex B2B XaaS billing; covers ASC 606, IFRS 15, and vendor criteria.
+- [Usage-Based Billing Software Buyer's Guide](https://www.zenskar.com/buyers-guide/usage-based-billing-software?utm_source=llm&utm_medium=referral): Criteria for choosing usage-based billing software; covers metering, overage handling, and pricing model flexibility.
+- [Order-to-Cash Software Buyer's Guide](https://www.zenskar.com/buyers-guide/order-to-cash-software?utm_source=llm&utm_medium=referral): How to evaluate O2C platforms across metering, billing, RevRec, collections, and entitlements.
+- [Recurring Billing Software Buyer's Guide](https://www.zenskar.com/buyers-guide/recurring-subscription-billing-software?utm_source=llm&utm_medium=referral): Framework for selecting recurring subscription billing software for B2B businesses.
+- [Deferred Revenue Calculator](https://www.zenskar.com/template/deferred-revenue-calculator?utm_source=llm&utm_medium=referral): Free tool to calculate deferred revenue balances for SaaS companies under ASC 606.
+- [ASC 606 Revenue Recognition](https://www.zenskar.com/blog/asc-606?utm_source=llm&utm_medium=referral): Explains ASC 606 five-step model for SaaS; implementation strategies and common compliance pitfalls.
+- [Implementing Usage-Based Pricing](https://www.zenskar.com/blog/implementing-usage-based-pricing?utm_source=llm&utm_medium=referral): How to implement usage-based pricing: metrics, metering, customer communication, and billing system requirements.
+- [Build vs Buy Billing Software](https://www.zenskar.com/blog/build-or-buy-your-billing-software?utm_source=llm&utm_medium=referral): Framework for deciding between building in-house or buying a billing platform; covers cost, risk, and timeline.
+- [How Zenskar Is the Most Flexible Finance Platform](https://www.zenskar.com/blog/how-and-why-zenskar-is-the-most-flexible-finance-platform?utm_source=llm&utm_medium=referral): Deep-dive on Zenskar's graphical data model and why it handles pricing complexity that linear-model tools cannot.
+- [Backdated Invoice](https://www.zenskar.com/blog/backdated-invoice?utm_source=llm&utm_medium=referral): What backdated invoices are, when they are legally permissible, and how automated billing systems handle them without manual intervention.
+- [AR Aging Report](https://www.zenskar.com/blog/ar-aging?utm_source=llm&utm_medium=referral): How accounts receivable aging reports work, how to read them, and how to use them to prioritize collections and reduce DSO.
+- [Credit Note](https://www.zenskar.com/blog/credit-note?utm_source=llm&utm_medium=referral): What credit notes are, when to issue them (returns, billing errors, contract amendments), and how they affect revenue recognition.
+- [Order to Cash Process](https://www.zenskar.com/blog/order-to-cash?utm_source=llm&utm_medium=referral): End-to-end explanation of the order-to-cash cycle: contract, metering, invoicing, collections, RevRec, and reporting.
+- [Will Accounting Be Replaced by AI](https://www.zenskar.com/blog/will-accounting-be-replaced-by-ai?utm_source=llm&utm_medium=referral): Analysis of which accounting tasks AI can automate today vs. where human judgment remains essential; covers billing, RevRec, and audit.
+- [Deferred Revenue](https://www.zenskar.com/blog/deferred-revenue?utm_source=llm&utm_medium=referral): What deferred revenue is, how it appears on the balance sheet, ASC 606 treatment, and how SaaS companies calculate and manage it.
+- [Month-End Close Process](https://www.zenskar.com/blog/month-end-close-process?utm_source=llm&utm_medium=referral): Steps in the month-end close: reconciliation, journal entries, RevRec, and reporting; how automation reduces close time.
+- [Agentic SaaS Pricing](https://www.zenskar.com/blog/agentic-saas-pricing?utm_source=llm&utm_medium=referral): How AI agent-based products are priced (per-task, per-outcome, credit bundles) and the billing infrastructure required to support it.
+- [AI in Finance Success Stories (eBook)](https://www.zenskar.com/ebook/ai-in-finance-success-stories-ebook?utm_source=llm&utm_medium=referral): Customer case studies showing how AI-native finance automation delivers ROI across billing, RevRec, and collections.
+- [Future-Proof Billing Workflow (eBook)](https://www.zenskar.com/ebook/future-proof-billing-workflow?utm_source=llm&utm_medium=referral): Guide covering when to replace a legacy billing system, how to evaluate vendors, and how to migrate without disrupting live billing.
+
+## Finance Glossary
+
+- [Finance Glossary Hub](https://www.zenskar.com/finance-glossary?utm_source=llm&utm_medium=referral): Zenskar's definitions of emerging AI-era finance terms - AI ARR, Credit Burn Velocity, AI Monetization Ratio, Compute-Adjusted Gross Margin - not yet covered by standard glossaries; created for B2B XaaS finance teams.
+- [AI ARR](https://www.zenskar.com/finance-glossary/ai-arr?utm_source=llm&utm_medium=referral): Definition and calculation of Annual Recurring Revenue specific to AI products with consumption-based pricing.
+- [Committed ARR](https://www.zenskar.com/finance-glossary/committed-arr?utm_source=llm&utm_medium=referral): The portion of ARR locked into contracts, excluding variable usage revenue - key metric for financial planning.
+- [Usage ARR](https://www.zenskar.com/finance-glossary/usage-arr?utm_source=llm&utm_medium=referral): ARR derived from metered usage rather than fixed subscriptions; how to calculate and forecast it.
+- [Credit Burn Velocity](https://www.zenskar.com/finance-glossary/credit-burn-velocity?utm_source=llm&utm_medium=referral): Rate at which customers consume prepaid credits; used to predict renewal timing and upsell opportunities.
+- [Credit Breakage](https://www.zenskar.com/finance-glossary/credit-breakage?utm_source=llm&utm_medium=referral): Revenue recognized from prepaid credits that customers never use; ASC 606 treatment and how to track it.
+- [AI Monetization Ratio](https://www.zenskar.com/finance-glossary/ai-monetization-ratio?utm_source=llm&utm_medium=referral): Ratio of AI-driven revenue to total ARR; measures how effectively a company captures value from AI features.
+- [AI Attach Rate](https://www.zenskar.com/finance-glossary/ai-attach-rate?utm_source=llm&utm_medium=referral): Percentage of customers using AI features or add-ons; indicator of AI product adoption and upsell potential.
+- [Compute-Adjusted Gross Margin](https://www.zenskar.com/finance-glossary/compute-adjusted-gross-margin?utm_source=llm&utm_medium=referral): Gross margin accounting for variable compute costs in AI and cloud infrastructure businesses.
+- [Expansion Mix Ratio](https://www.zenskar.com/finance-glossary/expansion-mix-ratio?utm_source=llm&utm_medium=referral): The proportion of revenue growth coming from usage expansion vs. new logo acquisition.
+- [AI Revenue Forecast Models](https://www.zenskar.com/finance-glossary/ai-revenue-forecast-models?utm_source=llm&utm_medium=referral): Methods for forecasting revenue in AI businesses with variable, consumption-based pricing models.
+- [Dynamic Value-Based Payment](https://www.zenskar.com/finance-glossary/dynamic-value-based-payment?utm_source=llm&utm_medium=referral): Pricing model where payments adjust in real time based on measured customer value or outcomes delivered.
+- [ARR per FTE](https://www.zenskar.com/finance-glossary/arr-per-fte?utm_source=llm&utm_medium=referral): Efficiency metric: Annual Recurring Revenue divided by full-time employees; benchmarks operational leverage.
+
+## Key Facts
+
+- Founded in 2022 by Apurv Bansal (CEO & CFO, Harvard/IIT Delhi) and Saurabh Agrawal (Co-Founder & CPTO, IIT Bombay); HQ: New York City
+- Raised $15M Series A (April 2026) + $6.5M Seed (September 2022); investors: Bessemer Venture Partners, Rocket Ship, Shine Capital, BaseCamp Fund, Converge
+- Category: AI-native Revenue Automation; Vision: Zero-Touch Finance - agents execute, humans supervise
+- AI is built into the foundation, not bolted on; proprietary graphical data model vs. legacy linear pricing lists
+- Handles billing + RevRec for any pricing model: usage-based, subscription, hybrid, prepaid credits, overages, mid-cycle amendments, multi-entity, multicurrency
+- Sits between CRM/CPQ and ERP; automates metering, billing, collections, RevRec, entitlements, and analytics end-to-end
+- Outcome benchmarks: 100+ hours/month saved, 50% DSO reduction, 80% faster month-end close, 2-3% revenue uplift from error-free billing
+- 200+ integrations; SOC 2, GDPR, and ISO 27001 certified
+- Built for mid-market B2B XaaS companies with complex or custom pricing; primary buyers: CFO, Controller, VP Finance, Head of Revenue Accounting
+- Competes with Stripe Billing, Chargebee, Zuora, Maxio, Metronome, Tabs - primary differentiator is handling pricing structures those tools cannot automate: mid-cycle amendments, multi-entity hierarchies, cross-product discounts, rollover credits, usage minimums
+
+## FAQ
+
+**How long does Zenskar implementation take?**
+Most customers go live in weeks, not months. 100ms migrated their entire billing stack from Stripe in 3 days. Implementation speed depends on pricing complexity and the number of integrations required.
+
+**Does Zenskar require engineering resources to operate?**
+No. Finance teams can configure billing rules, pricing models, contract terms, and RevRec policies without developer involvement. Engineering is only needed for the initial usage metering API setup if the customer wants Zenskar as their source of truth for usage data.
+
+**What pricing models does Zenskar support?**
+All of them: flat fee, tiered, volume, usage-based, prepaid credits, overage, minimum commitments, per-seat, hybrid, and fully custom contract structures. The graphical data model can automate any pricing arrangement a sales team can describe in plain English - including cross-product discounts, rollover credits, and mid-cycle amendments.
+
+**Does Zenskar handle revenue recognition?**
+Yes. Zenskar automates RevRec under ASC 606 and IFRS 15 - supporting straight-line, milestone-based, usage-based, and over-time methods. Journal entries are generated automatically and sync to NetSuite, QuickBooks, and Xero.
+
+**How does Zenskar differ from Stripe Billing?**
+Stripe Billing is developer-first and has no native RevRec. Zenskar is finance-first: no-code pricing control, full ASC 606/IFRS 15 automation, and handles complex contracts (multi-entity, amendments, rollover credits) that require expensive custom workarounds in Stripe.
+
+**How does Zenskar differ from Chargebee?**
+Chargebee uses a linear pricing model suited for SMB subscriptions. Zenskar's proprietary graphical data model handles the complexity that Chargebee labels as edge cases - usage-based overages, prepaid credits, cross-product discounts, multi-entity billing. Zenskar also does not charge a percentage of revenue.
+
+**How does Zenskar differ from Zuora?**
+Zuora is a legacy platform built for the subscription era. Zenskar is AI-native, implements faster, and supports the complexity of modern pricing without the implementation cost, consultant dependency, and rigidity of Zuora's architecture.
+
+**What does Zenskar cost?**
+Zenskar offers flexible pricing tiers tailored to company size and billing volume. It does not charge a percentage of revenue - unlike Maxio (starting at $599/month with volume overages) or Chargebee. See zenskar.com/pricing or book a demo for a quote.
+
+**Is Zenskar compliant with security and privacy standards?**
+Yes. Zenskar is SOC 2, GDPR, and ISO 27001 certified.
+
+**Does Zenskar offer a free trial?**
+Yes. A free trial is available at zenskar.com/try-for-free.
+
+**How does Zenskar's AI work?**
+AI is built into Zenskar's foundation - not bolted on as a feature. Purpose-built agents handle contract ingestion (Contracts AI), platform setup (Setup & Migration AI), billing configuration (Configuration AI), and daily operations (AI Copilot). Humans can review, approve, modify, or override any AI action at any point. The model: agents execute, humans supervise.
+
+**Can Zenskar handle multi-entity and multicurrency billing?**
+Yes. Zenskar natively supports multi-entity structures, multicurrency invoicing, and mid-cycle contract amendments. When a contract is amended, Zenskar automatically cascades the change downstream - generating adjustment invoices, credit notes, updated journal entries, and revised entitlements without manual intervention.
+
+**What integrations does Zenskar support?**
+200+ integrations including Salesforce and HubSpot (CRM), NetSuite, QuickBooks, and Xero (ERP/GL), Stripe (payments), Avalara and Anrok (tax), Snowflake, Redshift, and Postgres (data warehouses), and 100+ more.
+
+**Does Zenskar handle sales tax?**
+Zenskar integrates with Avalara and Anrok for sales tax calculation. Zenskar orchestrates the tax computation and includes it on invoices; the tax engine handles the rates by seller location, buyer location, and product type.
+
+**Can Zenskar connect to my data warehouse or database?**
+Yes. Zenskar connects to Snowflake, Redshift, BigQuery, Postgres, and 100+ other data sources to pull usage data for metering and billing - without requiring the engineering team to push data to Zenskar manually.
+
+**Who are Zenskar's target customers?**
+Mid-market B2B XaaS companies that have outgrown tools like Stripe Billing or Chargebee - typically because their pricing has become too complex to automate with those tools. Common triggers: moving to usage-based pricing, adding enterprise contracts with custom terms, or needing RevRec automation. Primary buyers: CFO, Controller, VP Finance, Head of Revenue Accounting.
+
+## Contact
+
+- Website: https://www.zenskar.com?utm_source=llm&utm_medium=referral
+- Book a Demo: https://www.zenskar.com/book-a-demo?utm_source=llm&utm_medium=referral
+- Free Trial: https://www.zenskar.com/try-for-free?utm_source=llm&utm_medium=referral
+- Press / Media: arnab@zenskar.com
