@@ -117,7 +117,7 @@
 
 ## Key Facts
 
-- Founded in 2022 by Apurv Bansal (CEO & CFO, Harvard/IIT Delhi) and Saurabh Agrawal (Co-Founder & CPTO, IIT Bombay); HQ: New York City
+- Founded in 2022 by Apurv Bansal (CEO, Harvard/IIT Delhi) and Saurabh Agrawal (Co-Founder & CPTO, IIT Bombay); HQ: New York City
 - Raised $15M Series A (April 2026) + $6.5M Seed (September 2022); investors: Bessemer Venture Partners, Rocket Ship, Shine Capital, BaseCamp Fund, Converge
 - Category: AI-native Revenue Automation; Vision: Zero-Touch Finance - agents execute, humans supervise
 - AI is built into the foundation, not bolted on; proprietary graphical data model vs. legacy linear pricing lists
