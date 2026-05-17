@@ -510,3 +510,66 @@ def register(mcp) -> None:
             return ok({"period": f"{start} to {end}", "row_count": len(rows), "rows": rows})
         except Exception as ex:
             return err("ga4_referrer_breakdown", ex)
+
+    _LLM_SOURCES = [
+        "perplexity.ai",
+        "chat.openai.com",
+        "chatgpt.com",
+        "claude.ai",
+        "gemini.google.com",
+        "copilot.microsoft.com",
+        "you.com",
+        "phind.com",
+        "bing.com",
+    ]
+
+    @mcp.tool()
+    def ga4_llm_referrals(
+        start_date: str = "",
+        end_date: str = "",
+        country: str = "",
+        limit: int = 20,
+    ) -> str:
+        """Aggregate GA4 traffic from LLM platforms (Perplexity, ChatGPT, Claude, Gemini, etc.).
+
+        Returns total LLM-referred sessions/users/key-events plus a per-source breakdown.
+
+        Args:
+            start_date: Start date YYYY-MM-DD (default: 28 days ago)
+            end_date: End date YYYY-MM-DD (default: today)
+            country: Full country name filter (e.g. "United States")
+            limit: Max source rows to return (default: 20)
+        """
+        try:
+            from mcp_server.clients import ga4
+            from google.analytics.data_v1beta.types import OrderBy
+
+            start, end = parse_dates(start_date, end_date)
+
+            llm_filter = ga4._in_list_filter("sessionSource", _LLM_SOURCES)
+            country_filter = ga4._build_filter(country, "")
+            combined = ga4._and_filters(llm_filter, country_filter)
+
+            rows = ga4.run_report(
+                start, end,
+                metrics=["sessions", "totalUsers", "engagementRate", "keyEvents"],
+                dimensions=["sessionSource"],
+                dimension_filter=combined,
+                order_by=[OrderBy(metric=OrderBy.MetricOrderBy(metric_name="sessions"), desc=True)],
+                limit=limit,
+            )
+
+            total_sessions = sum(r.get("sessions", 0) for r in rows)
+            total_users = sum(r.get("totalUsers", 0) for r in rows)
+            total_key_events = sum(r.get("keyEvents", 0) for r in rows)
+
+            return ok({
+                "period": f"{start} to {end}",
+                "total_llm_sessions": total_sessions,
+                "total_llm_users": total_users,
+                "total_llm_key_events": total_key_events,
+                "source_count": len(rows),
+                "sources": rows,
+            })
+        except Exception as ex:
+            return err("ga4_llm_referrals", ex)
