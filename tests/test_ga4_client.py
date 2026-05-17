@@ -13,6 +13,7 @@ def test_in_list_filter_sets_values():
     assert list(result.filter.in_list_filter.values) == values
 
 
-def test_in_list_filter_single_value():
-    result = _in_list_filter("sessionSource", ["perplexity.ai"])
-    assert list(result.filter.in_list_filter.values) == ["perplexity.ai"]
+def test_in_list_filter_empty_raises():
+    import pytest
+    with pytest.raises(ValueError, match="must be non-empty"):
+        _in_list_filter("sessionSource", [])

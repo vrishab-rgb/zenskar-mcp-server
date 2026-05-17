@@ -160,6 +160,8 @@ def _string_filter(field: str, value: str) -> FilterExpression:
 
 
 def _in_list_filter(field: str, values: list[str]) -> FilterExpression:
+    if not values:
+        raise ValueError("_in_list_filter: values must be non-empty")
     return FilterExpression(filter=Filter(
         field_name=field,
         in_list_filter=Filter.InListFilter(values=values),
