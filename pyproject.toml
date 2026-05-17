@@ -22,5 +22,8 @@ zenskar-mcp = "mcp_server.server:main"
 requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
 [tool.setuptools.packages.find]
 include = ["mcp_server*"]

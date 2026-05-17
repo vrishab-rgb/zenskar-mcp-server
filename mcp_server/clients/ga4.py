@@ -159,6 +159,13 @@ def _string_filter(field: str, value: str) -> FilterExpression:
     ))
 
 
+def _in_list_filter(field: str, values: list[str]) -> FilterExpression:
+    return FilterExpression(filter=Filter(
+        field_name=field,
+        in_list_filter=Filter.InListFilter(values=values),
+    ))
+
+
 def _and_filters(*filters: FilterExpression) -> FilterExpression | None:
     fs = [f for f in filters if f is not None]
     if not fs:
