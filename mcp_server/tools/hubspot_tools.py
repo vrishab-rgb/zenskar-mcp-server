@@ -55,7 +55,14 @@ def register(mcp) -> None:
     @mcp.tool()
     def hubspot_get_contact(
         contact_id: str,
-        properties: str = "firstname,lastname,email,jobtitle,hs_analytics_source,hs_analytics_first_url",
+        properties: str = (
+            "firstname,lastname,email,jobtitle,"
+            "hs_analytics_source,hs_analytics_source_data_1,hs_analytics_source_data_2,"
+            "hs_analytics_first_url,hs_analytics_first_referrer,"
+            "hs_analytics_last_url,hs_analytics_last_referrer,"
+            "hs_latest_source,hs_latest_source_data_1,hs_latest_source_data_2,"
+            "utm_source,utm_medium,utm_campaign,utm_term,utm_content"
+        ),
     ) -> str:
         """Get a HubSpot contact by ID (READ-ONLY).
 
@@ -419,6 +426,22 @@ def register(mcp) -> None:
             return ok(hubspot.get_property_distribution(object_type, property_name, sample_size=sample_size))
         except Exception as ex:
             return err("hubspot_property_distribution", ex)
+
+    @mcp.tool()
+    def hubspot_resolve_id(unknown_id: str) -> str:
+        """Identify what type of HubSpot object (deal, company, or contact) an ID belongs to.
+
+        Use this when a lookup returns 404 and you're unsure whether the ID is a
+        deal ID, company ID, or contact ID.
+
+        Args:
+            unknown_id: The HubSpot numeric ID to probe
+        """
+        try:
+            from mcp_server.clients import hubspot
+            return ok(hubspot.resolve_hubspot_id(unknown_id))
+        except Exception as ex:
+            return err("hubspot_resolve_id", ex)
 
     @mcp.tool()
     def hubspot_pages_to_deals(

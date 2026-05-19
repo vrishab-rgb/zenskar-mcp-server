@@ -40,11 +40,24 @@ def strip_html(text: str) -> str:
     return text.strip()
 
 
+def _check_404(r, object_type: str, object_id: str) -> None:
+    """Raise a descriptive ValueError on 404 instead of a generic HTTPError."""
+    if r.status_code == 404:
+        others = [t for t in ("deals", "companies", "contacts") if t != object_type]
+        raise ValueError(
+            f"{object_type.rstrip('s').capitalize()} ID {object_id!r} not found. "
+            f"If this ID came from a {others[0]} or {others[1]} lookup, pass it to "
+            f"hubspot_get_{others[0].rstrip('s')} or hubspot_get_{others[1].rstrip('s')} instead. "
+            "Use hubspot_resolve_id to identify what object type an unknown ID belongs to."
+        )
+    r.raise_for_status()
+
+
 def get_company(company_id: str, properties: list[str]) -> dict:
     """GET a company by ID with specified properties."""
     props = ",".join(properties)
     r = _session().get(f"{_BASE}/crm/v3/objects/companies/{company_id}?properties={props}")
-    r.raise_for_status()
+    _check_404(r, "companies", company_id)
     data = r.json()
     result = {"id": data.get("id", company_id)}
     result.update(data.get("properties", {}))
@@ -55,7 +68,7 @@ def get_contact(contact_id: str, properties: list[str]) -> dict:
     """GET a contact by ID with specified properties."""
     props = ",".join(properties)
     r = _session().get(f"{_BASE}/crm/v3/objects/contacts/{contact_id}?properties={props}")
-    r.raise_for_status()
+    _check_404(r, "contacts", contact_id)
     data = r.json()
     result = {"id": data.get("id", contact_id)}
     result.update(data.get("properties", {}))
@@ -66,11 +79,31 @@ def get_deal(deal_id: str, properties: list[str]) -> dict:
     """GET a deal by ID with specified properties."""
     props = ",".join(properties)
     r = _session().get(f"{_BASE}/crm/v3/objects/deals/{deal_id}?properties={props}")
-    r.raise_for_status()
+    _check_404(r, "deals", deal_id)
     data = r.json()
     result = {"id": data.get("id", deal_id)}
     result.update(data.get("properties", {}))
     return result
+
+
+def resolve_hubspot_id(unknown_id: str) -> dict:
+    """Probe an unknown ID against deals, companies, and contacts to identify its type."""
+    _NAME_PROPS = {
+        "deals": "dealname",
+        "companies": "name",
+        "contacts": None,  # built from firstname + lastname
+    }
+    for obj_type in ("deals", "companies", "contacts"):
+        r = _session().get(f"{_BASE}/crm/v3/objects/{obj_type}/{unknown_id}")
+        if r.status_code == 200:
+            p = r.json().get("properties", {})
+            if obj_type == "contacts":
+                name = f"{p.get('firstname') or ''} {p.get('lastname') or ''}".strip()
+            else:
+                name = p.get(_NAME_PROPS[obj_type]) or ""
+            return {"id": unknown_id, "type": obj_type, "name": name}
+        time.sleep(0.05)
+    return {"id": unknown_id, "type": None, "error": "ID not found in deals, companies, or contacts"}
 
 
 def search_deals(
@@ -275,8 +308,42 @@ def get_company_deals(company_id: str, properties: list[str] | None = None) -> l
     return deals
 
 
+def _fetch_form_submissions(form_guid: str) -> list[dict]:
+    """Fetch all recent submissions for a form (requires `forms` scope on the PAT)."""
+    r = _session().get(
+        f"{_BASE}/form-integrations/v1/submissions/forms/{form_guid}?limit=50"
+    )
+    if r.status_code == 403:
+        logger.warning(
+            "forms scope missing on HUBSPOT_PAT — field values unavailable. "
+            "Add the 'forms' scope to your Private Access Token in HubSpot settings."
+        )
+        return []
+    if r.status_code != 200:
+        return []
+    return r.json().get("results", [])
+
+
+def _match_form_submission(submissions: list[dict], occurred_at_iso: str) -> dict:
+    """Return field values from the submission closest in time to the event timestamp."""
+    if not submissions or not occurred_at_iso:
+        return {}
+    try:
+        import datetime
+        evt_ms = (
+            datetime.datetime.fromisoformat(occurred_at_iso.replace("Z", "+00:00"))
+            .timestamp() * 1000
+        )
+        best = min(submissions, key=lambda s: abs(s.get("submittedAt", 0) - evt_ms))
+        if abs(best.get("submittedAt", 0) - evt_ms) > 30_000:  # >30s gap → no confident match
+            return {}
+        return {v["name"]: v.get("value", "") for v in best.get("values", [])}
+    except Exception:
+        return {}
+
+
 def get_contact_form_submissions(contact_id: str, limit: int = 50) -> list[dict]:
-    """Form submission events for a contact."""
+    """Form submission events for a contact, including field values when available."""
     url = (
         f"{_BASE}/events/v3/events?objectType=contact&objectId={contact_id}"
         f"&eventType=e_submitted_form&limit={min(limit, 50)}"
@@ -284,14 +351,29 @@ def get_contact_form_submissions(contact_id: str, limit: int = 50) -> list[dict]
     r = _session().get(url)
     if r.status_code != 200:
         return []
+
+    # Cache per-form submissions to avoid redundant API calls across events
+    _form_cache: dict[str, list[dict]] = {}
+
     out = []
     for evt in r.json().get("results", []):
         props = evt.get("properties", {})
+        occurred_at = evt.get("occurredAt", "")
+        form_guid = props.get("hs_form_guid") or ""
+
+        field_values: dict = {}
+        if form_guid:
+            if form_guid not in _form_cache:
+                time.sleep(0.1)
+                _form_cache[form_guid] = _fetch_form_submissions(form_guid)
+            field_values = _match_form_submission(_form_cache[form_guid], occurred_at)
+
         out.append({
-            "timestamp": evt.get("occurredAt", ""),
-            "form_id": props.get("hs_form_guid") or "",
+            "timestamp": occurred_at,
+            "form_id": form_guid,
             "page_url": props.get("hs_url") or "",
             "page_title": props.get("hs_page_title") or "",
+            "field_values": field_values,
         })
     return out
 
