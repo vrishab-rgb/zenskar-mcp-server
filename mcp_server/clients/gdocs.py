@@ -39,9 +39,9 @@ def add_tab(doc_id: str, tab_title: str) -> str:
     svc = _get_service()
     resp = svc.documents().batchUpdate(
         documentId=doc_id,
-        body={"requests": [{"createTab": {"tabProperties": {"title": tab_title}}}]},
+        body={"requests": [{"addDocumentTab": {"tabProperties": {"title": tab_title}}}]},
     ).execute()
-    return resp["replies"][0]["createTab"]["tabProperties"]["tabId"]
+    return resp["replies"][0]["addDocumentTab"]["tabProperties"]["tabId"]
 
 
 # ── Marker used as placeholder for table positions during text-only pass ─────
