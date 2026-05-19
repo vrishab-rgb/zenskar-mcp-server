@@ -9,6 +9,7 @@ from mcp_server.tools import (
     ads_tools,
     bing_tools,
     ga4_tools,
+    gdocs_tools,
     gsc_tools,
     hubspot_tools,
     recommendations_tools,
@@ -22,3 +23,4 @@ def register_all(mcp) -> None:
     hubspot_tools.register(mcp)
     bing_tools.register(mcp)
     recommendations_tools.register(mcp)
+    gdocs_tools.register(mcp)

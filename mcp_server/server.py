@@ -40,7 +40,8 @@ mcp = FastMCP(
         "- HubSpot CRM (deals, contacts, companies — READ-ONLY)\n"
         "- Bing Webmaster Tools (Bing search performance)\n\n"
         "All date parameters accept YYYY-MM-DD format. Omit for last 28 days.\n"
-        "HubSpot tools are strictly read-only — no data is ever modified."
+        "HubSpot tools are strictly read-only — no data is ever modified.\n\n"
+        "- Google Docs (create/write formatted docs with tables, headings, colors via service account)"
     ),
 )
 
